@@ -1,29 +1,42 @@
-
 export default function Home() {
-  return (
-    <div>
-      Hello World
-    </div>
-  )
+  return <div>Hello World</div>;
 }
 
-//Pure functions
-function square(x){
-  return x * x
-}
+// function counter(state, action) {
+//   if (typeof state === 'undefined'){
+//     return 0;
+//   }
 
-function squareAll(items){
-  return items.map(square)
-}
+//   if (action.type === "INCREMENT"){
+//     return state + 1;
+//   } else if (action.type === "DECREMENT"){
+//     return state - 1;
+//   } else {
+//     return state;
+//   }
+// }
 
-//Impure functions
-function square(x){
-  updateXInDatabase(x)
-  return x * x
-}
-
-function squareAll(items){
-  for(let i = 0; i < items.length; i++){
-    items[i] = squareAll(items[i])
+const counter = (state = 0, action) => {
+  switch (action.type) {
+    case "INCREMENT":
+      return state + 1;
+    case "DECREMENT":
+      return state - 1;
+    default:
+      return state;
   }
 }
+
+expect(counter(0, { type: "INCREMENT" })).toEqual(1);
+
+expect(counter(1, { type: "INCREMENT" })).toEqual(2);
+
+expect(counter(2, { type: "DECREMENT" })).toEqual(1);
+
+expect(counter(1, { type: "DECREMENT" })).toEqual(0);
+
+expect(counter(1, { type: "SOMETHING_ELSE" })).toEqual(1);
+
+expect(counter(undefined, {})).toEqual(0);
+
+console.log("tests passed");
