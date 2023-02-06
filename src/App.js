@@ -1,9 +1,9 @@
 import React from 'react';
-import { Counter } from './script';
+// import { Counter } from './script';
 
 function App() {
   return (
-    <Counter />
+    <div></div>
   );
 }
 
