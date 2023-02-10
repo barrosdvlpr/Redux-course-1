@@ -1,9 +1,10 @@
 import React from 'react';
-// import { Counter } from './script';
+import { TodoApp } from './script';
 
 function App() {
+  return null
   return (
-    <div></div>
+    <TodoApp style={{color: "black"}}/>
   );
 }
 
